@@ -1,0 +1,38 @@
+.player-search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Space below the search bar */
+    z-index: 20;
+}
+
+.player-search-select {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Smooth transition for background and text color */
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid #6A46F9; /* A border color that fits with the gradient theme */
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
+    font-size: 16px; /* A readable font size */
+    color: #333; /* A color that provides contrast for the text */
+    outline: none; /* Remove the default focus outline */
+    cursor: pointer; /* Indicate the element is selectable */
+}
+
+.player-search-select:hover {
+    color: white; /* Font color to white */
+    background-color: #1E90FF; /* Background color to blue */
+    border: 2px solid rgba(91, 52, 245, 0.7); /*
+    /*border-color: #AA39EF; !* Change the border color on hover *!*/
+}
+
+.player-search-select:focus {
+    border-color: #AA39EF; /* Change the border color on focus */
+}
+
+/* If you have a label or any other elements, you can style them here */
+.player-search-label {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 5px;
+    display: block;
+}

@@ -1,0 +1,75 @@
+.player-container {
+  border: 2px solid #6bb8f3; /* Blue border for the framework */
+  border-radius: 10px; /* Rounded corners for the framework */
+  padding: 20px;
+  margin: 10px;
+  box-sizing: border-box; /* To include padding in the width and height */
+  width: 280pt; /* Width as per your requirement */
+  height: 150pt; /* Height as per your requirement */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  gap: 20px; /* Space between elements */
+  color: white; /* Text color */
+  background-color: rgba(
+    83,
+    84,
+    158,
+    0.5
+  ); /* Background color with transparency */
+}
+
+.player-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* take the full width to center content */
+}
+
+.sport-icon {
+  height: 40px; /* or the size you want */
+  margin-right: 10px; /* adds space between the icon and the name */
+}
+
+.player-info {
+  color: #ffffff; /* white text */
+}
+
+.player-name {
+  align-items: center;
+  font-size: 2.5em; /* larger font size for the name */
+  font-family: "Roboto", "Arial", sans-serif; /* 'sans-serif' is the generic font family */
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 10px;
+  border: 1px solid #6bb8f3; /* Blue border */
+  border-radius: 8px;
+}
+
+.player-number {
+  font-size: 2em; /* slightly smaller font size for the number */
+  font-family: "Poppins", sans-serif;
+  align-items: center;
+}
+
+.playerItem-image-container {
+  width: 100px; /* Fixed size */
+  height: 100px; /* Fixed size */
+  border-radius: 50%; /* Circular container */
+  overflow: hidden; /* Ensures the image is clipped to a circle */
+  border: 1px solid #6bb8f3; /* Blue border */
+  display: flex; /* Use flex layout */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  background-color: #ccf0ff; /* Background color in case image doesn't cover the whole area */
+}
+
+.playerItem-image {
+  width: 100%; /* Make the image fill the container */
+  height: 100%; /* Maintain aspect ratio */
+  display: block; /* Remove any extra space below the image */
+  border-radius: 50%;
+  object-fit: cover; /* Cover the whole area */
+  border: solid 2px#5010e4;
+}

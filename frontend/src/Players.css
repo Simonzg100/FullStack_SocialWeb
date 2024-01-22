@@ -1,0 +1,208 @@
+.players-header {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #080936; /* Solid color for header */
+  padding: 10px 20px;
+  z-index: 2; /* Above the overlay */
+  display: flex;
+  flex-direction: row; /* Ensure header content is in a row */
+  justify-content: flex-start; /* Align items to the start */
+  align-items: center; /* Center items vertically */
+}
+
+/*.players-card {*/
+/*    background-color: #ffffff; !* Card background color *!*/
+/*    border-radius: 20px; !* Rounded corners of the card *!*/
+/*    width: 300px; !* Width of the card *!*/
+/*    padding: 1rem; !* Padding inside the card *!*/
+/*    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); !* Shadow for depth *!*/
+/*    margin: 1rem; !* Margin around the card *!*/
+/*    position: relative; !* Position relative for absolute positioning of the icon *!*/
+
+/*}*/
+
+.players-container {
+  position: relative;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh; /* Adjust the height as necessary */
+  color: #fff;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(8, 9, 54, 0.5); /* 50% opacity color overlay */
+  z-index: 1;
+}
+
+.players-sections {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px; /* Space from the header */
+  z-index: 2;
+  position: relative;
+}
+
+.players-section {
+  width: 45%; /* Adjust the width for each section */
+  margin: 0 10px;
+}
+
+.players-section h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.players-section select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.players-list {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 15px;
+  height: 600px; /* Fixed height for scrollable area */
+  overflow-y: auto; /* Makes the section scrollable */
+  width: auto;
+  z-index: 10;
+  flex-direction: row;
+  backdrop-filter: blur(2.5px);
+
+  display: flex;
+  flex-wrap: wrap; /* If you want to wrap items to the next line */
+  justify-content: space-around; /* Adjust as per your design needs */
+  align-items: flex-start; /* Adjust if you want to align items differently */
+  overflow-x: auto; /* Only if you want a horizontal scrollbar */
+}
+
+.player-icon-container {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.player-image-container {
+  width: 100%;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  position: relative;
+}
+
+.header-container {
+  background-color: hsla(
+    254,
+    68%,
+    23%,
+    0.829
+  ); /* Use the color that matches your design */
+  border: none;
+  color: white;
+  padding: 10px 15px; /* Adjust padding to match the height of your 'All Conferences' button */
+  font-size: 1rem; /* Adjust font size as needed */
+  border-radius: 16px; /* Adjust border-radius to match your design */
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Adjust as necessary */
+}
+
+.header-container h2 {
+  margin-right: auto; /* Add spacing between the text and the dropdown */
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Adjust as necessary */
+  width: 500px;
+}
+
+.season-select {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 120px; /* Example width, adjust as necessary */
+  margin-left: auto;
+  margin-top: 20px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+/* The entire scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+  height: 12px; /* Height of the horizontal scrollbar */
+  background-color: #f9f9f9; /* Background of the scrollbar, could be transparent or any color */
+  border-radius: 6px;
+}
+
+/* The draggable scrolling handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #aa39ef 0%,
+    #6a46f9 100%
+  ); /* Gradient color for the scroll thumb */
+  border-radius: 6px; /* Rounded corners on the scroll thumb */
+}
+
+/* The track (progress bar) of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #080936; /* Color of the scrollbar track */
+  border-radius: 6px; /* Rounded corners on the scrollbar track */
+}
+
+/* Optional: for the hover state of the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  border-color: white; /* White border on hover */
+}
+
+.loading2 {
+  position: relative;
+  margin-top: 50px;
+  width: 48px;
+  height: 48px;
+  animation: satellite 3s infinite linear;
+  border: 1px solid #d1b9ff;
+  border-radius: 100%;
+  align-items: center;
+}
+
+.loading2:before,
+.loading2:after {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 12px;
+  height: 12px;
+  content: "";
+  border-radius: 100%;
+  background-color: #fff5f5;
+  box-shadow: 0 0 10px #a483ff;
+}
+
+.loading2:after {
+  right: 0;
+  width: 20px;
+  height: 20px;
+  margin: 13px;
+}
+
+@keyframes satellite {
+  from {
+    transform: rotate(0) translateZ(0);
+  }
+
+  to {
+    transform: rotate(360deg) translateZ(0);
+  }
+}

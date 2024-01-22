@@ -1,0 +1,104 @@
+.players-card {
+  background-color: rgba(8, 9, 54, 0.5); /* 50% opacity color overlay */
+  border-radius: 20px; /* Rounded corners of the card */
+  width: 250px; /* Width of the card */
+  padding: 1rem; /* Padding inside the card */
+  border: #080936 1px;
+  box-shadow: 2px 2px 4px rgb(118, 62, 203); /* Shadow for depth */
+  margin: 1rem; /* Margin around the card */
+  position: relative; /* Position relative for absolute positioning of the icon */
+
+  overflow: hidden; /* Ensure the contents do not overflow the border-radius */
+}
+
+.players-card-header {
+  /* Styles for the header containing the league icon and rating */
+  background-color: #6c63ff; /* Header background color */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding inside the header */
+  display: flex; /* Flex layout for header content */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Vertical alignment */
+}
+
+.league-icon {
+  /* Styles for the league icon */
+  height: 30px; /* Icon height */
+  margin-right: 10px; /* adds space between the icon and the name */
+}
+
+.players-rating {
+  /* Styles for the player rating */
+  background-color: white; /* Rating background */
+  color: #6c63ff; /* Rating text color */
+  padding: 5px 10px; /* Rating padding */
+  border-radius: 20px; /* Rounded corners for rating */
+  font-weight: bold; /* Bold font for the rating */
+}
+
+.players-position {
+  /* Styles for the player position */
+  background-color: #6c63ff; /* Position background color */
+  color: white; /* Position text color */
+  padding: 5px; /* Position padding */
+  border-radius: 10px; /* Rounded corners for position */
+  text-align: center; /* Centered text */
+  margin: -15px auto 0; /* Align to the top and center */
+  width: fit-content; /* Width as content size */
+  font-size: 1.5em; /* Name font size */
+}
+
+.players-image-container {
+  /* Styles for the image container */
+  display: flex; /* Flex layout to center image */
+  justify-content: center; /* Center horizontally */
+  padding: 20px; /* Padding around image */
+}
+
+.players-image {
+  /* Styles for the player's image */
+  border-radius: 50%; /* Circular image */
+  width: 90px; /* Image width */
+  height: 90px; /* Image height */
+  object-fit: cover; /* Cover the area without stretching */
+}
+
+.players-info {
+  /* Styles for the player's info section */
+  padding: 15px; /* Padding inside the info area */
+  text-align: center; /* Center text */
+
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+}
+
+.players-name {
+  /* Styles for the player's name */
+  margin: 10px 0; /* Space above and below the name */
+  font-size: 1.2em; /* Name font size */
+}
+
+.players-stats {
+  /* Styles for the player's stats */
+  display: grid; /* Grid layout for stats */
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 10px; /* Space between stats */
+}
+
+.stat-item {
+  /* Styles for each stat item */
+  background-color: rgb(55, 11, 119); /* Stat item background */
+  border-radius: 10px; /* Rounded corners for stat items */
+  padding: 5px; /* Padding inside stat items */
+  margin-bottom: 10px; /* Space below each stat item */
+}
+
+.player-name-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

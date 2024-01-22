@@ -1,0 +1,155 @@
+/* HomePage.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: 51px center;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  animation: blurToClear 1s ease-out forwards; /* Animation name, duration, easing, and fill-mode */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(8, 9, 54, 0.5); /* Hex color #080936 with 50% opacity */
+  z-index: 1; /* Ensures it's above the background image but below the content */
+}
+
+.title-image {
+  width: 388px; /* Width of the image */
+  height: 253px; /* Height of the image */
+  mix-blend-mode: lighten; /* Apply the lighten effect */
+  /* Adjust the position as needed */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Ensures the title image is above the overlay */
+  margin-bottom: 20px; /* Space between title image and search box */
+
+}
+
+.content {
+  position: relative;
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  padding: 15px; /* Add padding if needed */
+}
+
+.title {
+  font-size: 48px; /* Adjust the size as needed */
+  color: #ffffff; /* Adjust the color as needed */
+  text-align: center;
+  margin-bottom: 20px; /* Spacing below the title */
+}
+
+.title-search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This centers the children horizontally */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 20px;
+  z-index: 2;
+}
+
+.search-bar {
+  /* Styles for search bar and buttons */
+}
+
+.explore-button {
+  background-color: #8a2be2; /* Initial solid color for the button */
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  outline: none;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  /* Position relative for pseudo element */
+  position: relative;
+  overflow: hidden; /* Ensures the pseudo element doesn't overflow the button's border-radius */
+}
+
+.explore-button::after {
+  /* Pseudo element for the gradient */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, #AA39EF 0%, #6A46F9 100%); /* Vertical gradient */
+  z-index: -1;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease;
+  border-radius: 20px; /* Match the border-radius of the button */
+}
+
+.explore-button:hover::after {
+  opacity: 1; /* Show the gradient on hover */
+}
+
+.explore-button:hover {
+  background-color: transparent; /* Make the solid color transparent to reveal the gradient */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+.footer {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  z-index: 2;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-icons {
+  /* Styles for social media icons */
+  margin-bottom: 10px; /* Spacing below the icons */
+}
+
+.footer-content p {
+  margin: 5px 0;
+  font-size: 11px;
+}
+
+.title-image {
+  margin-bottom: 300px; /* Adjust space between title image and search box */
+  margin-top: 20px;
+  max-width: 100%; /* Ensures the image is responsive and fits its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+@keyframes blurToClear {
+  0% {
+    filter: blur(10px); /* Start with a blurred effect */
+  }
+  100% {
+    filter: none; /* End with no blur for clarity */
+  }
+}

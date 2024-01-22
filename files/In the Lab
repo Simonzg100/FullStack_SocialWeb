@@ -1,0 +1,50 @@
+-- Compare stats of two players——as specified by placeholders <playerID_1> and <playerID_2>——in the Lab interface by
+-- pulling data from tables `Player`, `NBA_Player`, `NCAA_Player`, `Game_Performance`, `NBA_Team`, and `NCAA_Team`
+-- as defined in Milestone 2.
+
+SELECT
+  P.Player_ID,
+  P.First_Name,
+  P.Last_Name,
+  P.Position,
+  COALESCE(NBA_T.Team_Name, NCAA_T.School) AS Team_Name, -- Select first non-null value to be valid team name
+  COALESCE(NBA_T.Team_City, NCAA_T.School_City) AS Team_City, -- Select first non-null value to be valid team city
+  P.Height,
+  P.Weight,
+  P.Season,
+  GP.Total_Points,
+  GP.Average_Points,
+  GP.Total_Rebounds,
+  GP.Average_Rebounds,
+  GP.Total_Assists,
+  GP.Average_Assists,
+  GP.Total_Steals,
+  GP.Average_Steals,
+  GP.Total_Blocks,
+  GP.Average_Blocks,
+  CASE 
+    WHEN NBA_P.NBA_Player_ID IS NOT NULL THEN 'NBA'
+    WHEN NCAA_P.NCAA_Player_ID IS NOT NULL THEN 'NCAA'
+  END AS League
+FROM Player P
+LEFT JOIN NBA_Player NBA_P ON P.Player_ID = NBA_P.NBA_Player_ID
+LEFT JOIN NCAA_Player NCAA_P ON P.Player_ID = NCAA_P.NCAA_Player_ID
+LEFT JOIN NBA_Team NBA_T ON NBA_P.Team_ID = NBA_T.Team_ID
+LEFT JOIN NCAA_Team NCAA_T ON NCAA_P.Team_ID = NCAA_T.Team_ID
+LEFT JOIN
+  (SELECT Player_ID,
+          SUM(Points) AS Total_Points,
+          AVG(Points) AS Average_Points,
+          SUM(Rebounds) AS Total_Rebounds,
+          AVG(Rebounds) AS Average_Rebounds,
+          SUM(Assists) AS Total_Assists,
+          AVG(Assists) AS Average_Assists,
+          SUM(Steals) AS Total_Steals,
+          AVG(Steals) AS Average_Steals,
+          SUM(Blocks) AS Total_Blocks,
+          AVG(Blocks) AS Average_Blocks
+  FROM Game_Performance
+  GROUP BY Player_ID) GP ON P.Player_ID = GP.Player_ID
+WHERE P.Player_ID IN (<playerID_1>, <playerID_2>)
+ORDER BY
+  P.Player_ID;

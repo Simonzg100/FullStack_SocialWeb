@@ -1,0 +1,131 @@
+
+
+-- Creating the database
+CREATE DATABASE NCAA_DATA;
+USE NCAA_DATA;
+
+
+-- Table 1: Personal_data
+CREATE TABLE PERSONAL_DATA (
+    player_id varchar(255) PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    jersey_number int,
+    position varchar(50),
+    height int,
+    weight int,
+    birth_place VARCHAR(255),
+    birthplace_city VARCHAR(255),
+    birthplace_country VARCHAR(255),
+    team_name varchar(255),
+    team_market varchar(255),
+    team_alias varchar(255),
+    conf_alias varchar(255),
+    league_name varchar(255),
+    active CHAR(1) CHECK(active IN ('Y', 'N'))
+);
+
+-- Table 2: Personal_game-performance
+CREATE TABLE PERSONAL_GAME_PERFORMANCE (
+    player_id varchar(255) PRIMARY KEY,
+    game_id varchar(255),
+    season int NOT NULL,
+    played boolean,
+    minutes float(2),
+    three_points_made int,
+    two_points_made int,
+    three_points_att int,
+    two_points_att int,
+    free_throws_made int,
+    free_throws_att int,
+    rebounds int,
+    offensive_rebounds int,
+    defensive_rebounds int,
+    assists int,
+    steals int,
+    personal_fouls int,
+    points int,
+    blocks int,
+    active CHAR(1) CHECK(active IN ('Y', 'N'))
+);
+
+
+# search bar navigator
+SELECT full_name, player_id
+FROM PERSONAL_DATA
+WHERE full_name LIKE '%[searched_name]%';
+# searched-name can be replaced by click the target item in react
+
+# player's personal information can display on his player card
+SELECT
+    full_name,
+    jersey_number,
+    team_name,
+    height,
+    weight,
+    CONCAT(birthplace_city, ', ', birthplace_country) AS birthplace
+FROM PERSONAL_DATA;
+
+#predictor card
+#predictor card is used to use a bar chart in our react, to show the different between each player and the average level
+# Calculate the Average Performance for Each Player in a Given Year:
+# we can use 2016 as reference
+SELECT
+    P.player_id,
+    AVG(G.points) AS avg_points_player,
+    AVG(G.rebounds) AS avg_rebounds_player,
+    AVG(G.assists) AS avg_assists_player,
+    AVG(G.steals) AS avg_steals_player,
+    AVG(G.blocks) AS avg_blocks_player,
+    AVG(G.two_points_made) AS avg_two_points_made_player,
+    AVG(G.three_points_made) AS avg_three_points_made_player,
+    AVG(G.free_throws_made) AS avg_free_throws_made_player,
+    AVG(G.personal_fouls) AS avg_personal_fouls_player,
+    AVG(G.defensive_rebounds) AS avg_defensive_rebounds_player,
+    AVG(G.offensive_rebounds) AS avg_offensive_rebounds_player
+FROM PERSONAL_GAME_PERFORMANCE G
+JOIN PERSONAL_DATA P ON G.player_id = P.player_id
+WHERE G.season = 2016 AND P.player_id = 'ec59553d-b73a-47e9-a0ee-5148c64b2100'
+
+GROUP BY P.player_id;
+
+
+
+# Calculate the Average Performance for All Players in the Same Position During That Year:
+# we can use 2016 as reference
+# we can use play_id = "ec59553d-b73a-47e9-a0ee-5148c64b2100" as an example
+SELECT
+    PD.position,
+    AVG(PGP.points) AS avg_points_players,
+    AVG(PGP.rebounds) AS avg_rebounds_players,
+    AVG(PGP.assists) AS avg_assists_players,
+    AVG(PGP.steals) AS avg_steals_players,
+    AVG(PGP.blocks) AS avg_blocks_players,
+    AVG(PGP.two_points_made) AS avg_two_points_made_players,
+    AVG(PGP.three_points_made) AS avg_three_points_made_players,
+    AVG(PGP.free_throws_made) AS avg_free_throws_made_players,
+    AVG(PGP.personal_fouls) AS avg_personal_fouls_players,
+    AVG(PGP.defensive_rebounds) AS avg_defensive_rebounds_players,
+    AVG(PGP.offensive_rebounds) AS avg_offensive_rebounds_players
+FROM PERSONAL_DATA PD
+JOIN PERSONAL_GAME_PERFORMANCE PGP ON PD.player_id = PGP.player_id
+WHERE PGP.season = 2016 AND PD.position = (SELECT position FROM PERSONAL_DATA WHERE player_id = 'ec59553d-b73a-47e9-a0ee-5148c64b2100')
+GROUP BY PD.position;
+
+
+
+
+# design a evaluation rating system to give every player a grade
+SELECT
+    player_id,
+    (
+        AVG(points) * 0.2 +
+        AVG(rebounds) * 0.15 +
+        AVG(assists) * 0.15 +
+        AVG(steals) * 0.1 +
+        AVG(blocks) * 0.1 +
+        (AVG(two_points_made) / AVG(two_points_att)) * 100 * 0.1 +
+        (AVG(three_points_made) / AVG(three_points_att)) * 100 * 0.1 +
+        (AVG(free_throws_made) / AVG(free_throws_att)) * 100 * 0.1
+    ) AS preliminary_rating
+FROM PERSONAL_GAME_PERFORMANCE
+GROUP BY player_id;

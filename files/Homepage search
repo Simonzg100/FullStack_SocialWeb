@@ -1,0 +1,27 @@
+-- The Homepage presents a search bar where the user can specify either NBA or NCAA to specify
+-- what player they're looking for, before entering the name of the player into the search bar.
+-- Assume @SearchType is the specified type of search and @UserQuery is what's written in the
+-- search bar. The query spits out a player_id that the web app uses to navigate to that player page.
+
+DECLARE @SearchType VARCHAR(50); -- Either 'NBA' or 'NCAA'
+DECLARE @UserQuery VARCHAR(255); -- User input in the search bar
+
+IF @SearchType = 'NBA'
+BEGIN
+  SELECT 
+    NBA_Player.NBA_Player_ID AS Player_ID,
+    Player.First_Name + ' ' + Player.Last_Name AS Player_Name
+  FROM NBA_Player
+  INNER JOIN Player ON NBA_Player.NBA_Player_ID = Player.Player_ID
+  WHERE Player.First_Name LIKE '%' + @UserQuery + '%' OR Player.Last_Name LIKE '%' + @UserQuery + '%';
+END
+
+ELSE IF @SearchType = 'NCAA'
+BEGIN
+  SELECT
+    NCAA_Player.NCAA_Player_ID AS Player_ID,
+    Player.First_Name + ' ' + Player.Last_Name AS Player_Name
+  FROM NCAA_Player
+  INNER JOIN Player ON NCAA_Player.NCAA_Player_ID = Player.Player_ID
+  WHERE Player.First_Name LIKE '%' + @UserQuery + '%' OR Player.Last_Name LIKE '%' + @UserQuery + '%';
+END

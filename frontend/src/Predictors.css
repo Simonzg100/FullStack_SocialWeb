@@ -1,0 +1,132 @@
+/* Predictor.css */
+
+.predictor-container {
+  /* Your custom styles for the predictor container */
+  /*padding-top:  70px;*/
+  /*background-size: 115% 115%;;*/
+  background-position: center center;
+  position: relative;
+  /* Needed for absolute positioning of children */
+  justify-content: space-between;
+  /* Align items to the start of the container */
+  display: flex;
+  flex-direction: column;
+  /* Change to column to stack header and main content */
+  align-items: stretch;
+  /* This will make children (header and content) to stretch full width */
+  height: 100vh;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(8, 9, 54, 0.7);
+  /* Hex color #080936 with 50% opacity */
+
+  z-index: 1;
+  /* Ensures it's above the background image but below the content */
+}
+
+.predictor-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #080936;
+  /* Solid color for header */
+  padding: 10px 20px;
+  z-index: 2;
+  /* Above the overlay */
+  display: flex;
+  flex-direction: row;
+  /* Ensure header content is in a row */
+  justify-content: flex-start;
+  /* Align items to the start */
+  align-items: center;
+  /* Center items vertically */
+}
+
+.left-panel,
+.right-panel {
+  width: 50%;
+}
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  /* Lay out the children inline */
+  justify-content: center;
+  z-index: 2;
+  padding: 10px;
+  padding-left: 80px;
+  padding-right: 30px;
+}
+
+.search-container input {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(58, 58, 173);
+  color: white;
+  cursor: pointer;
+}
+
+.search-and-card-container {
+  /* This container will hold both the search bar and the player card */
+  margin-right: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  /* Adjust the space between search bar and player card */
+  width: 50%;
+  /* Adjust based on your layout needs */
+  flex: 1;
+  z-index: 2;
+  padding: 40px;
+  padding-right: 100px;
+  background: linear-gradient(
+    180deg,
+    rgba(170, 57, 239, 0.4) 0%,
+    /* 70% opacity for #AA39EF */ rgba(98, 62, 241, 0.5) 100%
+      /* 70% opacity for #6A46F9 */
+  );
+  border-color: solid #33207a 2px;
+  box-shadow: 5px 5px 5px rgb(118, 62, 203); /* Shadow for depth */
+  backdrop-filter: blur(10px); /* Blur effect for the background */
+  flex: 1; /* Allow the frame to grow */
+  border-top: 20px solid #370b77; /* 5px blue top border */
+}
+
+.statistics-container {
+  width: 50%;
+  /* Adjust based on your layout needs */
+  flex: 2;
+  /* Style your statistics container here */
+  z-index: 3;
+  margin: 80px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.player-card {
+  width: 100%;
+  /* Full width to match the search bar width */
+  /* Other styles remain the same */
+}

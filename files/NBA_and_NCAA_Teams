@@ -1,0 +1,162 @@
+
+use project;
+
+--query
+--nba
+--1. all the teams divided into different regions.
+select distinct Team
+from nba_data_all;
+
+
+--2. present all the players’ icons, names, and numbers belonging to each team in the selected season  (teamName(Icon),, playerName, playerNumber)
+select distinct Team, PLAYER_NAME
+from nba_data_all
+where Team = 'GSW' and Season = '2020';
+
+--3.top 5 skill
+WITH REB_Top AS (
+    SELECT PLAYER_NAME, SUM(CAST(REB AS UNSIGNED)) AS Total_REB
+    FROM nba_data_all
+
+    GROUP BY PLAYER_NAME
+    ORDER BY Total_REB DESC
+    LIMIT 1
+),
+AST_Top AS (
+    SELECT PLAYER_NAME, SUM(AST) AS Total_AST
+    FROM nba_data_all
+
+    GROUP BY PLAYER_NAME
+    ORDER BY Total_AST DESC
+    LIMIT 1
+),
+STL_Top AS (
+    SELECT PLAYER_NAME, SUM(CAST(STL AS UNSIGNED)) AS Total_STL
+    FROM nba_data_all
+
+    GROUP BY PLAYER_NAME
+    ORDER BY Total_STL DESC
+    LIMIT 1
+),
+BLOCK_Top AS (
+    SELECT PLAYER_NAME, SUM(CAST(BLK AS UNSIGNED)) AS Total_BLOCK
+    FROM nba_data_all
+
+    GROUP BY PLAYER_NAME
+    ORDER BY Total_BLOCK DESC
+    LIMIT 1
+),
+PTS_Top AS (
+    SELECT PLAYER_NAME, SUM(PTS) AS Total_PTS
+    FROM nba_data_all
+
+    GROUP BY PLAYER_NAME
+    ORDER BY Total_PTS DESC
+    LIMIT 1
+)
+SELECT
+    'PTS' AS Skill, PTS_Top.PLAYER_NAME, PTS_Top.Total_PTS
+FROM
+    PTS_Top
+UNION ALL
+SELECT
+    'REB', REB_Top.PLAYER_NAME, REB_Top.Total_REB
+FROM
+    REB_Top
+UNION ALL
+SELECT
+    'AST', AST_Top.PLAYER_NAME, AST_Top.Total_AST
+FROM
+    AST_Top
+UNION ALL
+SELECT
+    'STL', STL_Top.PLAYER_NAME, STL_Top.Total_STL
+FROM
+    STL_Top
+UNION ALL
+SELECT
+    'BLOCK', BLOCK_Top.PLAYER_NAME, BLOCK_Top.Total_BLOCK
+FROM
+    BLOCK_Top;
+
+
+--ncaa
+--all the teams divided into different regions.
+select distinct team_name, team_market as region
+from player_games
+where team_name is not null and team_market is not null ;
+
+
+
+--present all the players’ icons, names, and numbers belonging to each team in the selected season  (teamName(Icon),, playerName, playerNumber
+--2015 tigers
+select distinct team_name, full_name as player_name, jersey_number as player_number
+from player_games
+where team_name = 'Warriors' and Season = '2013';
+
+
+--top 5 skills
+WITH PTS_Top AS (
+    SELECT full_name, SUM(CAST(points AS UNSIGNED)) AS Total_PTS
+    FROM player_games
+
+    GROUP BY full_name
+    ORDER BY Total_PTS DESC
+    LIMIT 1
+),
+REB_Top AS (
+    SELECT full_name, SUM(CAST(rebounds AS UNSIGNED)) AS Total_REB
+    FROM player_games
+
+    GROUP BY full_name
+    ORDER BY Total_REB DESC
+    LIMIT 1
+),
+AST_Top AS (
+    SELECT full_name, SUM(CAST(assists AS UNSIGNED)) AS Total_AST
+    FROM player_games
+
+    GROUP BY full_name
+    ORDER BY Total_AST DESC
+    LIMIT 1
+),
+STL_Top AS (
+    SELECT full_name, SUM(CAST(steals AS UNSIGNED)) AS Total_STL
+    FROM player_games
+
+    GROUP BY full_name
+    ORDER BY Total_STL DESC
+    LIMIT 1
+),
+BLK_Top AS (
+    SELECT full_name, SUM(CAST(blocks AS UNSIGNED)) AS Total_BLK
+    FROM player_games
+
+    GROUP BY full_name
+    ORDER BY Total_BLK DESC
+    LIMIT 1
+)
+SELECT
+    'PTS' AS Skill, PTS_Top.full_name, PTS_Top.Total_PTS
+FROM
+    PTS_Top
+UNION ALL
+SELECT
+    'REB', REB_Top.full_name, REB_Top.Total_REB
+FROM
+    REB_Top
+UNION ALL
+SELECT
+    'AST', AST_Top.full_name, AST_Top.Total_AST
+FROM
+    AST_Top
+UNION ALL
+SELECT
+    'STL', STL_Top.full_name, STL_Top.Total_STL
+FROM
+    STL_Top
+UNION ALL
+SELECT
+    'BLK', BLK_Top.full_name, BLK_Top.Total_BLK
+FROM
+    BLK_Top;

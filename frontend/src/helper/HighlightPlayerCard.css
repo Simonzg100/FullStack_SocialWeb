@@ -1,0 +1,46 @@
+.highlight-player-card {
+  background-color: rgb(30, 144, 255, 0.3); /* 50% opacity color overlay */
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 2px solid rgba(91, 52, 245, 0.7); /* Blue border */
+  /* width: 80%; */
+  flex-direction: row; /* Don't grow, don't shrink, and don't let the basis be affected by the content's width */
+  backdrop-filter: blur(10px); /* Blur effect for the background */
+  width: auto;
+}
+
+.stat-category {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+}
+
+.player-name {
+  font-size: 1em;
+  margin-right: 10px;
+}
+
+.player-stat {
+  font-size: 1.5em;
+}
+
+.player-image {
+  width: 120px; /* Adjust size as needed */
+  height: 100px; /* Adjust size as needed */
+  border-radius: 50%; /* Circular image */
+}
+
+.player-name {
+  flex-direction: row;
+}
+
+.player-skill {
+  font-size: 1.2em;
+  font-weight: bold;
+}

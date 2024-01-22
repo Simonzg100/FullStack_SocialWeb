@@ -1,0 +1,49 @@
+.statistics-frame {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border-radius: 15px; /* Rounded corners */
+    color: #fff; /* White text color */
+    padding: 20px; /* Padding inside the box */
+    min-width: 250px; /* Minimum width of the frame */
+    max-width: 500px; /* Maximum width of the frame */
+
+
+    margin: 20px auto; /* Center the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for a subtle depth effect */
+    backdrop-filter: blur(10px); /* Blur effect for the background */
+    flex: 1; /* Allow the frame to grow */
+    border-top: 20px solid #370b77; /* 5px blue top border */
+
+}
+
+.statistics-frame h3 {
+    text-align: center; /* Center align the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    font-size: 1.5em; /* Size of the heading */
+}
+
+.statistics-frame ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.statistics-frame li {
+    padding: 10px 0; /* Padding top and bottom for each list item */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Border bottom for each list item */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space out the label and value */
+    font-size: 1em; /* Font size for list items */
+}
+
+/* Style for the last list item to remove the border */
+.statistics-frame li:last-child {
+    border-bottom: none;
+}
+
+/* Add more specific styles as needed... */
+.small-frame {
+    /* Define the height and other styles for the small frame */
+    height: 300px; /* Example height */
+    overflow: hidden; /* Hide the overflow */
+    /* Add other styling as needed */
+}

@@ -1,0 +1,309 @@
+/* You may also include media queries to handle responsiveness */
+@media (max-width: 768px) {
+  .player-comparison-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.player-comparison-page {
+  background-size: cover;
+  background-position: center center;
+  position: relative; /* Needed for absolute positioning of children */
+  justify-content: flex-start; /* Align items to the start of the container */
+  display: flex;
+  flex-direction: column; /* Change to column to stack header and main content */
+  align-items: stretch; /* This will make children (header and content) to stretch full width */
+  background-repeat: repeat-x;
+  /* backgroundimage: url(./image/bg_comparison.png); */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(8, 9, 54, 0.5); /* 50% opacity color overlay */
+  z-index: 0; /* Ensure it's above the background image but below everything else */
+  overflow-y: auto;
+}
+
+.navigation-header {
+  /*position: absolute;*/
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #080936; /* Solid color for header */
+  padding: 10px 20px;
+  z-index: 2; /* Above the overlay */
+  display: flex;
+  flex-direction: row; /* Ensure header content is in a row */
+  justify-content: flex-start; /* Align items to the start */
+  align-items: center; /* Center items vertically */
+}
+
+.navigation-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px; /* Adjust the space between navigation items */
+  /* ... other styles ... */
+}
+
+.navigation-link {
+  display: flex;
+  flex-direction: row; /* Make sure the links are in a row */
+  flex-wrap: nowrap; /* Prevent wrapping to a new line */
+  gap: 10px;
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 10px 20px;
+  /*background-color: #080936; !* Normal state background *!*/
+  background-color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 8px;
+  z-index: 2; /* Ensures the nav is above the overlay */
+}
+
+.navigation-link:hover {
+  background-color: #1e90ff; /* Hover state background color */
+  color: #ffffff; /* Text color on hover */
+  border-radius: 8px;
+}
+
+.home-icon-link {
+  background-color: transparent; /* or any color you want */
+  border: none; /* or any border style you want */
+  cursor: pointer;
+  flex-shrink: 0; /* Prevent the icon from shrinking */
+  margin-left: auto; /* Push the home icon to the far right */
+  padding: 0.5em; /* or any padding you prefer */
+  display: flex; /* To center the icon inside the link */
+  align-items: center; /* Center the icon vertically */
+  margin-right: 10px; /* Adjust spacing between links */
+}
+
+.home-icon {
+  width: 24px; /* Adjust the size as needed */
+  height: 24px; /* Adjust the size as needed */
+  display: block; /* Ensures the img tag behaves as a block-level element */
+}
+
+/* Dropdown button style */
+.dropbtn {
+  background-color: #1e90ff; /* Button background color */
+  color: white; /* Button text color */
+  padding: 16px; /* Button padding */
+  font-size: 16px; /* Text size */
+  border: none; /* Remove border */
+  cursor: pointer; /* Cursor to pointer */
+  width: 100%; /* Full width */
+  text-align: left; /* Align text to the left */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Dropdown content container */
+.nba {
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+  flex-direction: row;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9; /* Background color of dropdown items */
+  min-width: 160px; /* Minimum width */
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); /* Box shadow */
+  z-index: 1; /* Ensure it's on top */
+}
+
+/* Show the dropdown */
+.dropdown-content.show {
+  display: block;
+}
+
+/* Dropdown item style */
+.dropdown-content a {
+  color: black; /* Text color */
+  padding: 12px 16px; /* Padding */
+  text-decoration: none; /* No underline */
+  display: block; /* Block-level elements */
+}
+
+/* Hover style for dropdown items */
+.dropdown-content a:hover {
+  background-color: #ddd; /* Grey background on hover */
+}
+
+.small-frames-container {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center frames vertically */
+  gap: 20px; /* Space between the two small frames */
+}
+
+.player-search {
+  flex-basis: 48%; /* Each search bar will take up roughly half the container */
+}
+
+/* Additional styles for PlayerSearch component if needed */
+.player-search-select {
+  width: 100%; /* Make select fill the container */
+  /* ... other styles from previous example ... */
+}
+
+.statistics-frame {
+  /* Set max-height to match the small-frame and allow scrolling */
+  max-height: 300px; /* Should match the height of .small-frame */
+  overflow-y: auto; /* Enable vertical scrolling */
+  /* Add other styling as needed */
+}
+
+.statistics-frame {
+  /* existing styles */
+  position: relative; /* Use relative positioning */
+  top: -20px; /* Move the frame up by 20 pixels */
+}
+
+/* Style for your league selection dropdowns */
+.league-selection-dropdown {
+  background-color: #5d3fd3; /* A purple background */
+  color: white; /* White text */
+  border: 1px solid #4a3fac; /* A slightly darker purple border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 15px; /* Padding inside the dropdown */
+  margin-right: 10px; /* Margin to the right of the dropdown */
+  cursor: pointer; /* Change the cursor to indicate it's clickable */
+  appearance: none; /* Remove the native OS dropdown styling */
+  -webkit-appearance: none; /* Also for Safari */
+}
+
+/* You may want to add additional pseudo-classes for interaction states */
+.league-selection-dropdown:hover {
+  background-color: #4a3fac; /* A darker purple on hover */
+}
+
+.league-selection-dropdown:focus {
+  outline: none; /* Remove the default focus outline */
+  border-color: #33207a; /* Different border color when focused */
+  box-shadow: 0 0 0 2px rgba(93, 63, 211, 0.5); /* Optional: Add a glow effect */
+}
+
+/* Disabled state for dropdown */
+.league-selection-dropdown:disabled {
+  background-color: #e0e0e0; /* A light grey background for disabled state */
+  color: #a0a0a0; /* A grey text for disabled state */
+  cursor: not-allowed; /* Change the cursor to indicate it's not clickable */
+}
+
+.NBA-search-bar {
+  display: flex;
+  color: rgb(255, 255, 255);
+  justify-content: center;
+  align-items: center; /* Align items vertically */
+  flex-direction: row;
+  padding: 5px;
+  background: linear-gradient(90deg, #aa39ef 0%, #6a46f9 100%);
+  border-radius: 5px;
+  margin-right: 20px;
+  height: 50px;
+}
+.NCAA-search-bar {
+  display: flex;
+  color: rgb(255, 255, 255);
+  justify-content: center;
+  align-items: center; /* Align items vertically */
+  flex-direction: row;
+  padding: 5px;
+  background: linear-gradient(-90deg, #aa39ef 0%, #6a46f9 100%);
+  border-radius: 5px;
+  height: 50px;
+}
+
+.searchbar {
+  margin-bottom: 1000px;
+  height: 150px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.icon {
+  width: 50px;
+  height: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.nba-comparison-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Adjust the gap between cards as necessary */
+  align-items: center; /* Align items vertically */
+  flex-direction: column; /* Stack children vertically */
+  width: 40%;
+  /* Add any additional styling as needed for the layout */
+  z-index: 10;
+  border-radius: 16px;
+  padding: 10px;
+  background-color: #15132a;
+  background: linear-gradient(
+    180deg,
+    rgba(170, 57, 239, 0.4) 0%,
+    /* 70% opacity for #AA39EF */ rgba(98, 62, 241, 0.5) 100%
+      /* 70% opacity for #6A46F9 */
+  );
+  border-color: solid #33207a 2px;
+  box-shadow: 5px 5px 5px rgb(118, 62, 203); /* Shadow for depth */
+  margin-top: 480px;
+}
+
+.ncaa-comparison-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Adjust the gap between cards as necessary */
+  align-items: center; /* Align items vertically */
+  flex-direction: column; /* Stack children vertically */
+  width: 40%;
+  /* Add any additional styling as needed for the layout */
+  z-index: 10;
+  border-radius: 16px;
+  padding: 10px;
+  background-color: #15132a;
+  background: linear-gradient(
+    180deg,
+    rgba(170, 57, 239, 0.4) 0%,
+    /* 70% opacity for #AA39EF */ rgba(98, 62, 241, 0.5) 100%
+      /* 70% opacity for #6A46F9 */
+  );
+  border-color: solid #33207a 2px;
+  box-shadow: 5px 5px 5px rgb(118, 62, 203); /* Shadow for depth */
+  margin-top: 480px;
+}
+
+.comparison {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  gap: 100px;
+  height: auto;
+}
+
+.nba-chart {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.ncaa-chart {
+  width: 100%;
+  margin-bottom: 20px;
+}

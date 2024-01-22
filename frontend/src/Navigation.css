@@ -1,0 +1,136 @@
+/* Navigation.css */
+.navigation-container {
+    background-size: 115% 115%;;
+    background-position: center center;
+    position: relative; /* Needed for absolute positioning of children */
+    justify-content: flex-start; /* Align items to the start of the container */
+    display: flex;
+    flex-direction: column; /* Change to column to stack header and main content */
+    align-items: stretch; /* This will make children (header and content) to stretch full width */
+    height: 100vh;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(8, 9, 54, 0.5); /* 50% opacity color overlay */
+    z-index: 1; /* Ensure it's above the background image but below everything else */
+}
+
+.navigation-header {
+    /*position: absolute;*/
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #080936; /* Solid color for header */
+    padding: 10px 20px;
+    z-index: 2; /* Above the overlay */
+    display: flex;
+    flex-direction: row; /* Ensure header content is in a row */
+    justify-content: flex-start; /* Align items to the start */
+    align-items: center; /* Center items vertically */
+}
+
+.navigation-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px; /* Adjust the space between navigation items */
+    /* ... other styles ... */
+}
+
+.navigation-link {
+    display: flex;
+    flex-direction: row; /* Make sure the links are in a row */
+    flex-wrap: nowrap; /* Prevent wrapping to a new line */
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px 20px;
+    /*background-color: #080936; !* Normal state background *!*/
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 8px;
+    z-index: 2; /* Ensures the nav is above the overlay */
+}
+
+.navigation-link:hover {
+    background-color: #1E90FF; /* Hover state background color */
+    color: #FFFFFF; /* Text color on hover */
+    border-radius: 8px;
+}
+
+.home-icon-link {
+    background-color: transparent; /* or any color you want */
+    border: none; /* or any border style you want */
+    cursor: pointer;
+    flex-shrink: 0; /* Prevent the icon from shrinking */
+    margin-left: auto; /* Push the home icon to the far right */
+    padding: 0.5em; /* or any padding you prefer */
+    display: flex; /* To center the icon inside the link */
+    align-items: center; /* Center the icon vertically */
+    margin-right: 10px; /* Adjust spacing between links */
+
+}
+
+.home-icon {
+    width: 24px; /* Adjust the size as needed */
+    height: 24px; /* Adjust the size as needed */
+    display: block; /* Ensures the img tag behaves as a block-level element */
+}
+
+.conferences-dropdown {
+    /* Style for your dropdown */
+}
+
+/* Dropdown button style */
+.dropbtn {
+    background-color: #1E90FF; /* Button background color */
+    color: white; /* Button text color */
+    padding: 16px; /* Button padding */
+    font-size: 16px; /* Text size */
+    border: none; /* Remove border */
+    cursor: pointer; /* Cursor to pointer */
+    width: 100%; /* Full width */
+    text-align: left; /* Align text to the left */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Dropdown content container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9; /* Background color of dropdown items */
+    min-width: 160px; /* Minimum width */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Box shadow */
+    z-index: 1; /* Ensure it's on top */
+}
+
+/* Show the dropdown */
+.dropdown-content.show {
+    display: block;
+}
+
+/* Dropdown item style */
+.dropdown-content a {
+    color: black; /* Text color */
+    padding: 12px 16px; /* Padding */
+    text-decoration: none; /* No underline */
+    display: block; /* Block-level elements */
+}
+
+/* Hover style for dropdown items */
+.dropdown-content a:hover {
+    background-color: #ddd; /* Grey background on hover */
+}

@@ -1,0 +1,80 @@
+#NBA Button SQL Query:
+
+#This query retrieves player information for NBA players, including their 5 skills stats,
+SELECT
+    p.first_name,
+    p.last_name,
+    p.position,
+    gp.Points,
+    gp.Rebounds,
+    gp.Assists,
+    gp.Steals,
+    gp.Blocks,
+    'NBA' AS league,
+    'NBA Icon URL' AS icon_url,
+    (gp.Points + gp.Rebounds + gp.Assists + gp.Steals + gp.Blocks) AS overall_rating
+FROM
+    Player p
+JOIN
+    Game_performance gp ON p.player_id = gp.player_id
+JOIN
+    Nba_game ng ON gp.Game_ID = ng.Game_ID
+WHERE
+    ng.Season = 'CurrentSeason'
+    -- Add additional conditions if needed, such as filtering by team or other criteria
+ORDER BY
+    overall_rating DESC;
+
+
+#NCAA Button SQL Query:
+
+#This query retrieves player information for NCAA players, including their 5 skills stats,
+# and adds a column 'NCAA' as the league and an overall rating specific to NCAA.
+SELECT
+    p.first_name,
+    p.last_name,
+    p.position,
+    gp.Points,
+    gp.Rebounds,
+    gp.Assists,
+    gp.Steals,
+    gp.Blocks,
+    'NCAA' AS league,
+    'NCAA Icon URL' AS icon_url,
+    (gp.Points + gp.Rebounds + gp.Assists + gp.Steals + gp.Blocks) AS overall_rating
+FROM
+    Player p
+JOIN
+    Game_performance gp ON p.player_id = gp.player_id
+JOIN
+    Ncaa_game ng ON gp.Game_ID = ng.Game_ID
+WHERE
+    ng.Season = 'CurrentSeason'
+    -- Add additional conditions if needed, such as filtering by team or other criteria
+ORDER BY
+    overall_rating DESC;
+
+
+#This complex query calculates average performance statistics for NBA teams during a specific season,
+# considering only teams that have played more than 20 games.
+SELECT
+    nba_team.Team,
+    COUNT(DISTINCT nba_game.Game_ID) AS TotalGames,
+    AVG(gp.Points) AS AvgPoints,
+    AVG(gp.Rebounds) AS AvgRebounds,
+    AVG(gp.Assists) AS AvgAssists
+FROM
+    nba_team
+JOIN
+    nba_game ON nba_team.Team_Id = nba_game.Home_Team_Id
+JOIN
+    game_performance gp ON nba_game.Game_ID = gp.Game_ID
+WHERE
+    nba_game.Season = '2022-2023'
+GROUP BY
+    nba_team.Team
+HAVING
+    COUNT(DISTINCT nba_game.Game_ID) > 20
+ORDER BY
+    AvgPoints DESC;
+
